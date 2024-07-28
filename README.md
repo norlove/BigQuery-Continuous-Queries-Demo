@@ -48,9 +48,27 @@ OPTIONS (remote_service_type="CLOUD_AI_LARGE_LANGUAGE_MODEL_V1")
 
 **NOTE: if you have issues with this demo, it is 9 times out of 10 related to an IAM permissions issue.**
 
+8. Create a Pub/Sub topic [[ref](https://cloud.google.com/pubsub/docs/create-topic)] named "recapture_customer", with a default subscription, which you'll write the results of your continuous query to.
+<img width="557" alt="Screenshot 2024-07-28 at 4 21 13 PM" src="https://github.com/user-attachments/assets/ce86bcb7-7d22-46d0-8ec3-b904423db1ca">
+   
+9. Grant the service account you created in step #7 permissions to the Pub/Sub topic with the Pub/Sub Viewer and Pub/Sub Publisher roles [[ref](https://cloud.google.com/bigquery/docs/export-to-pubsub#service_account_permissions_2)].
+  
 8. BigQuery continuous queries require a BigQuery Enterprise or Enterprise Plus reservation [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction#reservation_limitations)]. Create one now in the US multi-region, with 100 slots, and a 100 slot baseline (at the time of this writing BigQuery continuous queries does not support autoscaling).
 
 <img width="564" alt="Screenshot 2024-07-28 at 4 12 45 PM" src="https://github.com/user-attachments/assets/22d03b1b-0794-4f45-adc6-ba4a8dc4805b">
+
+9. Create a "CONTINUOUS" assignment under your newly created reservation using this SQL statement in the BigQuery editor:
+```
+CREATE ASSIGNMENT
+  `production-242320.region-us.bq-continuous-queries-reservation.continuous-assignment`
+OPTIONS (
+  assignee = 'projects/production-242320',
+  job_type = 'CONTINUOUS');
+```
+
+You'll now see your assignment created under your reservation:
+<img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
+
 
 ## Create a BigQuery continuous query
 
