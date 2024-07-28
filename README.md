@@ -48,6 +48,9 @@ OPTIONS (remote_service_type="CLOUD_AI_LARGE_LANGUAGE_MODEL_V1")
 
 **NOTE: if you have issues with this demo, it is 9 times out of 10 related to an IAM permissions issue.**
 
+8. BigQuery continuous queries require a BigQuery Enterprise or Enterprise Plus reservation [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction#reservation_limitations)]. Create one now in the US multi-region, with 100 slots, and a 100 slot baseline (at the time of this writing BigQuery continuous queries does not support autoscaling).
+
+<img width="564" alt="Screenshot 2024-07-28 at 4 12 45 PM" src="https://github.com/user-attachments/assets/22d03b1b-0794-4f45-adc6-ba4a8dc4805b">
 
 ## Create a BigQuery continuous query
 
@@ -73,4 +76,4 @@ AS (SELECT
      TRUE AS flatten_json_output)))
 ```
 
-2.  
+2.  You may notice an 
