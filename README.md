@@ -15,7 +15,9 @@ To demonstrate this example, we’ll use a BigQuery table named “abandoned_car
 
 ## Setting up our project
 
-1. Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
+1. Ensure your user account has the appropriate IAM permissions [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#choose_an_account_type)]. During this demo, we'll run the continuous query with a Service Account as we'll be writing to a Pub/Sub topic.
+
+2. Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
 ```
 #Creates a dataset named Continuous_Queries_demo. Be sure to replace the project production-242320 with your own Project ID.
 CREATE SCHEMA `production-242320.Continuous_Queries_Demo`;
@@ -27,14 +29,14 @@ CREATE TABLE `Continuous_Queries_Demo.abandoned_carts`(
   last_updated timestamp default current_timestamp,
   products string);
 ```
-2. Create a BigQuery remote connection in the Cloud Console using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#create_a_cloud_resource_connection).
+3. Create a BigQuery remote connection in the Cloud Console using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#create_a_cloud_resource_connection).
 <img width="544" alt="Screenshot 2024-07-28 at 3 46 08 PM" src="https://github.com/user-attachments/assets/05afada9-a7aa-4cbf-80d6-c075f0a23d4d">
 
-3. Click "Go to connection", and in the Connection Info pane, copy the service account ID for use in the next step.
+4. Click "Go to connection", and in the Connection Info pane, copy the service account ID for use in the next step.
 
-4. Grant Vertex AI User role IAM access to the service account ID you just copied using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#set_up_access).
+5. Grant Vertex AI User role IAM access to the service account ID you just copied using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#set_up_access).
 
-5. Create a BigQuery ML remote model by running the following SQL query in your BigQuery environment:
+6. Create a BigQuery ML remote model by running the following SQL query in your BigQuery environment:
 ```
 #Creates a BigQuery ML remote model named cloud_llm
 CREATE OR REPLACE MODEL `Continuous_Queries_Demo.cloud_llm`
@@ -42,9 +44,14 @@ REMOTE WITH CONNECTION `production-242320.us.continuous-queries-connection` #swa
 OPTIONS (remote_service_type="CLOUD_AI_LARGE_LANGUAGE_MODEL_V1")
 ```
 
-6. Create a BigQuery Service Account
+7. Create a BigQuery Service Account named "bq-continuous-query-sa", granting yourself permissions to subit a job that runs using the service account [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#user_account_permissions)], and granting permissions to the service account itself to access BigQuery resources [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#service_account_permissions)].
 
-7. Paste the following SQL query into your BigQuery environment:
+**NOTE: if you have issues with this demo, it is 9 times out of 10 related to an IAM permissions issue.**
+
+
+## Create a BigQuery continuous query
+
+1. Paste the following SQL query into your BigQuery environment:
 ```
 EXPORT DATA
  OPTIONS (format = CLOUD_PUBSUB,
@@ -66,8 +73,4 @@ AS (SELECT
      TRUE AS flatten_json_output)))
 ```
 
-8. 
-
-
-
-8. 
+2.  
