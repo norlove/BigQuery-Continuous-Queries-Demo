@@ -13,9 +13,9 @@ To demonstrate this example, we’ll use a BigQuery table named “abandoned_car
 
 <img width="1022" alt="Screenshot 2024-07-28 at 3 38 17 PM" src="https://github.com/user-attachments/assets/782a51b0-6839-4fa6-b3e5-cce135251c3d">
 
-Let's first get our project ready be setting up the necessary items.
+## Setting up our project
 
-Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
+1. Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
 ```
 #Creates a dataset named Continuous_Queries_demo. Be sure to replace the project production-242320 with your own Project ID.
 CREATE SCHEMA `production-242320.Continuous_Queries_Demo`;
@@ -27,3 +27,6 @@ CREATE TABLE `Continuous_Queries_Demo.abandoned_carts`(
   last_updated timestamp default current_timestamp,
   products string);
 ```
+2. Create a [BigQuery connection](https://cloud.google.com/bigquery/docs/create-cloud-resource-connection).
+
+3. 
