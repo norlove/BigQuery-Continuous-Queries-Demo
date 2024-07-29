@@ -162,4 +162,36 @@ AS (SELECT
      TRUE AS flatten_json_output)))
 ```
 
-4.  You may notice an 
+4.  You may notice an
+
+## Stream data into the Abandoned Carts BigQuery table
+
+1. BigQuery continuous queries can read and process data which arrives into BigQuery in a variety of ways [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction)]. For the purposes of this end-to-end demo, we'll offer two options: a very simple DML INSERT and streaming data to the abandoned_carts table using the BigQuery Storage Write API.
+
+2. To insert data into your table via a simple DML INSERT, just run the below query from the BigQuery console to insert one new row into your table:
+```
+#Simple DML INSERT to add one "abandoned shopping cart" to your table. 
+#Be sure to change the email address to an email address you can actually access for demo purposes.
+INSERT INTO `Continuous_Queries_Demo.abandoned_carts`(customer_name, customer_email,products)
+VALUES ("Your_Shopper's_Name","Your.Shoppers.Email@gmail.com","Violin Strings, Tiny Saxophone, Guitar Strap")
+```
+
+3. To stream data into your table via the BigQuery Storage Write API [[ref](https://cloud.google.com/bigquery/docs/write-api)], copy the files from the write-api-streaming-example folder into a Unix-based development environment (the [Google Cloud Shell](https://cloud.google.com/shell) is amazing for simple dev/test)
+
+4. In this example, we’ll use Python, so we’ll stream data as protocol buffers. For a quick refresher on working with protocol buffers, [here’s a great tutorial](https://developers.google.com/protocol-buffers/docs/pythontutorial). Using Python, we’ll first align our protobuf messages to the table we created using a .proto file in proto2 format. Use the sample_data.proto file from the write-api-streaming-example folder you downloaded to your developer environment, then run the following command within to update your protocol buffer definition:
+```
+protoc --python_out=. sample_data.proto
+```
+
+5. Within your developer environment, use this sample streaming_script.py Python script to insert some new example abandoned cart events by reading from the abandoned_carts.json file and writing into the abandoned_carts BigQuery table. This code uses the BigQuery Storage Write API to stream a batch of row data by appending proto2 serialized bytes to the serialzed_rows repeated field like the example below:
+```
+row = sample_data_pb2.SampleData()
+    row.customer_name = "Your_Shopper's_Name"
+    row.customer_email = “Your.Shoppers.Email@gmail.com”
+    row.products = "Violin Strings, Tiny Saxophone, Guitar Strap"
+proto_rows.serialized_rows.append(row.SerializeToString())
+```
+
+6. Check your email for the personalized message!
+
+
