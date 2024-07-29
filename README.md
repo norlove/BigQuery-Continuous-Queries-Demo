@@ -211,7 +211,7 @@ VALUES ("Your_Shopper's_Name","Your.Shoppers.Email@gmail.com","Violin Strings, T
 protoc --python_out=. sample_data.proto
 ```
 
-5. Within your developer environment, use this sample streaming_script.py Python script to insert some new example abandoned cart events by reading from the abandoned_carts.json file and writing into the abandoned_carts BigQuery table. This code uses the BigQuery Storage Write API to stream a batch of row data by appending proto2 serialized bytes to the serialzed_rows repeated field like the example below:
+5. Within your developer environment, run this sample streaming_script.py Python script to insert some new example abandoned cart events by reading from the abandoned_carts.json file and writing into the abandoned_carts BigQuery table. This code uses the BigQuery Storage Write API to stream a batch of row data by appending proto2 serialized bytes to the serialzed_rows repeated field like the example below:
 ```
 row = sample_data_pb2.SampleData()
     row.customer_name = "Your_Shopper's_Name"
@@ -220,6 +220,8 @@ row = sample_data_pb2.SampleData()
 proto_rows.serialized_rows.append(row.SerializeToString())
 ```
 
-6. Check your email for the personalized message!
+6. Within your BigQuery abandoned_carts table, you'll see your newly ingested data:
+<img width="1093" alt="Screenshot 2024-07-29 at 1 34 45 AM" src="https://github.com/user-attachments/assets/cf82e9f6-0033-44f4-ba5b-cae8a1bc7507">
 
-
+7. And check your email for the personalized message(s)!
+<img width="1175" alt="Screenshot 2024-07-29 at 1 35 15 AM" src="https://github.com/user-attachments/assets/40c3a0f7-3d30-4369-be0b-61b8c8078ade">
