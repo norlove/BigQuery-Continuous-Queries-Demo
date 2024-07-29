@@ -1,0 +1,27 @@
+[
+ {
+  "customer_name": "Nick",
+  "customer_email": "continuous.queries.sample.shopper@gmail.com",
+  "products": "Golf Club, Tennis Racket, Running Shoes"
+ },
+ {
+    "customer_name": "Heather",
+    "customer_email": "continuous.queries.sample.shopper@gmail.com",
+    "products": "Paint brush, Drawing Pencils, Painters Easel"
+ },
+ {
+    "customer_name": "Keaton",
+    "customer_email": "continuous.queries.sample.shopper@gmail.com",
+    "products": "Violin Strings, Tiny Saxophone, Guitar Strap"
+ },
+ {
+    "customer_name": "Addie",
+    "customer_email": "continuous.queries.sample.shopper@gmail.com",
+    "products": "Dog Leash, Dog Chew Toy, Frisbee"
+ },
+ {
+    "customer_name": "Scout",
+    "customer_email": "continuous.queries.sample.shopper@gmail.com",
+    "products": "Beach blanket, Camping Tent, Hiking Shoes"
+ }
+]
