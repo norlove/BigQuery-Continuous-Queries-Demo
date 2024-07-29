@@ -124,7 +124,7 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 
 ## Create a BigQuery continuous query
 
-1. BigQuery continuous queries require a BigQuery Enterprise or Enterprise Plus reservation [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction#reservation_limitations)]. Create one now in the US multi-region, with 100 slots, and a 100 slot baseline (at the time of this writing BigQuery continuous queries does not support autoscaling).
+1. BigQuery continuous queries require a BigQuery Enterprise or Enterprise Plus reservation [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction#reservation_limitations)]. Create one now named "bq-continuous-queries-reservation" in the US multi-region, with 100 slots, and a 100 slot baseline (at the time of this writing BigQuery continuous queries does not support autoscaling).
 
 <img width="564" alt="Screenshot 2024-07-28 at 4 12 45 PM" src="https://github.com/user-attachments/assets/22d03b1b-0794-4f45-adc6-ba4a8dc4805b">
 
@@ -139,6 +139,8 @@ OPTIONS (
 
 You'll now see your assignment created under your reservation:
 <img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
+
+**Note: If this fails for you
 
 3. Paste the following SQL query into your BigQuery environment:
 ```
@@ -162,7 +164,10 @@ AS (SELECT
      TRUE AS flatten_json_output)))
 ```
 
-4.  You may notice an
+4.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
+
+**NOTE: If you do not see this option, your project or user may not be allowlisted to use the BigQuery continuous queries public preview. Fill out [this request form](https://docs.google.com/forms/d/e/1FAIpQLSc-SL89C9K997jSm_u3oQH-UGGe3brzsybbX6mf5VFaA0a4iA/viewform) to obtian access.
+5.  
 
 ## Stream data into the Abandoned Carts BigQuery table
 
