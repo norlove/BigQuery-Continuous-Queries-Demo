@@ -121,6 +121,16 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 23. Click the "PUBLISH" button on the top right of the Application Integration bar
 <img width="1491" alt="Screenshot 2024-07-28 at 5 07 00 PM" src="https://github.com/user-attachments/assets/9bc2e49d-fa52-4642-8aa6-0da03aee9e72">
 
+24. Go back to the Pub/Sub page and to your Pub/Sub Topic named "recapture_customer", which we created earlier. You'll see that you have a new subscription named something like "<your_project_name>_recapture_customer_<some_random_string>"
+<img width="1353" alt="Screenshot 2024-07-29 at 1 19 41 AM" src="https://github.com/user-attachments/assets/99df906d-f6f7-446c-bea7-55b47b57fd1f">
+
+25. Click on this subscription, then click the Edit pencil button at the top of the screen.
+
+26. Under the Service Account section, you'll likely see a warning which states "Note: Cloud Pub/Sub needs the role roles/iam.serviceAccountTokenCreator granted to service account service-<your_project_number>@gcp-sa-pubsub.iam.gserviceaccount.com on this project to create identity tokens. You can change this later."
+<img width="566" alt="Screenshot 2024-07-29 at 1 22 23 AM" src="https://github.com/user-attachments/assets/7f167d46-f3fd-4d7b-be7d-4168d23e85ac">
+
+27. Click the "GRANT" button to grant these permissions. Then click the "UPDATE" button at the bottom of the Edit wizard.
+
 24. Your Application Integration should now be fully deployed.
 <img width="1485" alt="Screenshot 2024-07-28 at 5 08 18 PM" src="https://github.com/user-attachments/assets/23b493b0-595a-4d51-8b72-59547faef211">
 
