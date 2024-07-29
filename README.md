@@ -165,10 +165,21 @@ AS (SELECT
 ```
 
 4.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
+<img width="1127" alt="Screenshot 2024-07-29 at 12 01 52 AM" src="https://github.com/user-attachments/assets/9af40d46-b828-4e69-aca6-9664213bd23a">
 
-**NOTE: If you do not see this option, your project or user may not be allowlisted to use the BigQuery continuous queries public preview. Fill out [this request form](https://docs.google.com/forms/d/e/1FAIpQLSc-SL89C9K997jSm_u3oQH-UGGe3brzsybbX6mf5VFaA0a4iA/viewform) to obtian access.
-5.  
+**NOTE: If you do not see this option, your project or user may not be allowlisted to use the BigQuery continuous queries public preview. Fill out [this request form](https://docs.google.com/forms/d/e/1FAIpQLSc-SL89C9K997jSm_u3oQH-UGGe3brzsybbX6mf5VFaA0a4iA/viewform) to obtian access.**
 
+5. Click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
+
+6. Since we are writing the results of this continuous query to a Pub/Sub topic, you must run this query using a Service Account. We'll use the service account we created earlier. Click More -> Query Settings and scroll down to the Continuous query section and select your service account "bq-continuous-query-sa" and click Save.
+
+<img width="551" alt="Screenshot 2024-07-29 at 12 03 55 AM" src="https://github.com/user-attachments/assets/28aff716-a3b9-4c85-a829-33efed32cd03">
+
+7. Your continuous query should now be valid.
+<img width="267" alt="Screenshot 2024-07-29 at 12 05 29 AM" src="https://github.com/user-attachments/assets/f8a231f5-e697-448e-ab7a-4c4c7363f892">
+
+8. Click Run to start your continuous query. After about a minute or so, the continuous query will be fully running, ready to receive and process incoming data into your abandoned_carts table.
+   
 ## Stream data into the Abandoned Carts BigQuery table
 
 1. BigQuery continuous queries can read and process data which arrives into BigQuery in a variety of ways [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction)]. For the purposes of this end-to-end demo, we'll offer two options: a very simple DML INSERT and streaming data to the abandoned_carts table using the BigQuery Storage Write API.
