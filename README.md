@@ -159,15 +159,15 @@ AS (SELECT
      STRUCT(
        customer_name AS customer_name,
        customer_email AS customer_email, REGEXP_REPLACE(REGEXP_EXTRACT(ml_generate_text_llm_result,r"(?im)\<html\>(?s:.)*\<\/html\>"), r"(?i)\[your name\]", "Your friends at AI Megastore") AS customer_message))
- FROM ML.GENERATE_TEXT( MODEL `production-242320.Continuous_Queries_Demo.cloud_llm`,
+ FROM ML.GENERATE_TEXT( MODEL `Continuous_Queries_Demo.gemini_1_5_pro`,
      (SELECT
        customer_name,
        customer_email,
        CONCAT("Write an email to customer ", customer_name, ", explaining the benefits and encouraging them to complete their purchase of: ", products, ". Also show other items the customer might be interested in. Provide the response email in HTML format.") AS prompt
-     FROM `production-242320.Continuous_Queries_Demo.abandoned_carts`), 
+     FROM `Continuous_Queries_Demo.abandoned_carts`),
    STRUCT( 1024 AS max_output_tokens,
      0.2 AS temperature,
-     1 AS candidate_count,
+     1 AS candidate_count, 
      TRUE AS flatten_json_output)))
 ```
 
