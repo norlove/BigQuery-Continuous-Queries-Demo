@@ -140,21 +140,16 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 
 <img width="564" alt="Screenshot 2024-07-28 at 4 12 45 PM" src="https://github.com/user-attachments/assets/22d03b1b-0794-4f45-adc6-ba4a8dc4805b">
 
-2. Create a "CONTINUOUS" assignment under your newly created reservation using this SQL statement in the BigQuery editor:
-```
-CREATE ASSIGNMENT
-  `production-242320.region-us.bq-continuous-queries-reservation.continuous-assignment`
-OPTIONS (
-  assignee = 'projects/production-242320',
-  job_type = 'CONTINUOUS');
-```
+2. Once the reservation has been created, click on the three dots under Actions, and click "Create assignment". 
+<img width="212" alt="Screenshot 2024-08-01 at 6 26 21 PM" src="https://github.com/user-attachments/assets/2d71fe08-d3c0-4d35-ab4a-769120f535e4">
 
-You'll now see your assignment created under your reservation:
+3. Click Browse and find the project you are using for this demo. Then Select "CONTINUOUS" as the Job Type. Click Create.
+<img width="558" alt="Screenshot 2024-08-01 at 6 27 59 PM" src="https://github.com/user-attachments/assets/8f455be4-5fd1-469c-be3f-e3f3e3d43133">
+
+4. You'll now see your assignment created under your reservation:
 <img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
 
-**Note: If this fails for you
-
-3. Paste the following SQL query into your BigQuery environment:
+5. Go back to the BigQuery SQL editor and paste the following SQL query:
 ```
 EXPORT DATA
  OPTIONS (format = CLOUD_PUBSUB,
@@ -169,7 +164,7 @@ AS (SELECT
        customer_name,
        customer_email,
        CONCAT("Write an email to customer ", customer_name, ", explaining the benefits and encouraging them to complete their purchase of: ", products, ". Also show other items the customer might be interested in. Provide the response email in HTML format.") AS prompt
-     FROM `production-242320.Continuous_Queries_Demo.abandoned_carts`),
+     FROM `production-242320.Continuous_Queries_Demo.abandoned_carts`), 
    STRUCT( 1024 AS max_output_tokens,
      0.2 AS temperature,
      1 AS candidate_count,
