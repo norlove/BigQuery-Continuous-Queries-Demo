@@ -75,43 +75,43 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 6. Click Tasks at the top of the Application Integration bar, search for "Data Mapping", and add the Data Mapping item to your canvas.
 
 7. Connect the Cloud Pub/Sub Trigger to the Data Mapping item.
-            <img width="288" alt="Screenshot 2024-07-28 at 4 42 26 PM" src="https://github.com/user-attachments/assets/fd39f8c2-7896-4828-8161-e32a4061bd6c">
+         <img width="288" alt="Screenshot 2024-07-28 at 4 42 26 PM" src="https://github.com/user-attachments/assets/fd39f8c2-7896-4828-8161-e32a4061bd6c">
 
-8. Click the Data Mapping item and click the button that says "OPEN DATA MAPPING EDITOR"
+9. Click the Data Mapping item and click the button that says "OPEN DATA MAPPING EDITOR"
 
-9. You'll crate four Input variables, each initially starting as "CloudPubSubMessage.data" :
+10. You'll crate four Input variables, each initially starting as "CloudPubSubMessage.data" :
             <img width="1044" alt="Screenshot 2024-07-28 at 4 45 15 PM" src="https://github.com/user-attachments/assets/46546ba1-461a-466f-b7fc-8c4008f1734f">
 
-10. For the first Input's Output, click "create a new one", referring to create a new variable. Name it "message_output", change the Variable Type to "Output from Integration", change the Data Type to "String", and change the default value to "Empty String".
+11. For the first Input's Output, click "create a new one", referring to create a new variable. Name it "message_output", change the Variable Type to "Output from Integration", change the Data Type to "String", and change the default value to "Empty String".
             <img width="567" alt="Screenshot 2024-07-28 at 4 46 41 PM" src="https://github.com/user-attachments/assets/1a81096c-dac7-4946-881b-3be70c2c0d6f">
 
-11. For the second Input, click the Plus icon and select TO_JSON() near the bottom. Click the next Plus and select GET_PROPERTY(), click the "Variable or Value" link, click the Value tab and type in "customer_message". Click Save.
+12. For the second Input, click the Plus icon and select TO_JSON() near the bottom. Click the next Plus and select GET_PROPERTY(), click the "Variable or Value" link, click the Value tab and type in "customer_message". Click Save.
             <img width="1071" alt="Screenshot 2024-07-28 at 4 52 49 PM" src="https://github.com/user-attachments/assets/af0a8a37-22eb-41dd-844a-f89737833435">
 
-12. For the second Input's Output, click "create a new one". Name this one "customer_message" and set the same configuration settings as the "message_output" above.
+13. For the second Input's Output, click "create a new one". Name this one "customer_message" and set the same configuration settings as the "message_output" above.
 
-13. Two of your four data mappings should now be complete
+14. Two of your four data mappings should now be complete
             <img width="1044" alt="Screenshot 2024-07-28 at 4 54 31 PM" src="https://github.com/user-attachments/assets/aab0486c-02ae-477f-bc6d-690282362957">
 
-14. For the third input, click the Plus icon, select TO_JSON, click the next Plus and select GET_PROPERTY(). Click to add a new Value and type in "customer_email". Click Save.
+15. For the third input, click the Plus icon, select TO_JSON, click the next Plus and select GET_PROPERTY(). Click to add a new Value and type in "customer_email". Click Save.
 
-15. For the third Input's Output, click "create a new one". Name this one "customer_email" and set the same configuration settings as the other ones above.
+16. For the third Input's Output, click "create a new one". Name this one "customer_email" and set the same configuration settings as the other ones above.
 
-16. For the fourth input, click the Plus icon, select TO_JSON, click the next Plus and select GET_PROPERTY(). Click to add a new Value and type in "customer_name". Click Save.
+17. For the fourth input, click the Plus icon, select TO_JSON, click the next Plus and select GET_PROPERTY(). Click to add a new Value and type in "customer_name". Click Save.
 
-17. For the fourth Input's Output, click "create a new one". Name this one "customer_name" and set the same configuration settings as the other ones above.
+18. For the fourth Input's Output, click "create a new one". Name this one "customer_name" and set the same configuration settings as the other ones above.
 
-18. All four of your mappings should be complete
+19. All four of your mappings should be complete
             <img width="1448" alt="Screenshot 2024-07-28 at 4 59 21 PM" src="https://github.com/user-attachments/assets/3741cb2a-7b18-4fbd-977d-77af56a94eef">
 
-19. To the left of "Data Mapping Task Editor" on the top of the screen, click the back arrow to go back to the canvas.
+20. To the left of "Data Mapping Task Editor" on the top of the screen, click the back arrow to go back to the canvas.
 
-20. Click Tasks at the top of the Application Integration bar, search for "Send Email", and add the Send Email item to your canvas.
+21. Click Tasks at the top of the Application Integration bar, search for "Send Email", and add the Send Email item to your canvas.
 
-21. Connect the Data Mapping item to the Send Email item.
-            <img width="253" alt="Screenshot 2024-07-28 at 5 02 11 PM" src="https://github.com/user-attachments/assets/a7de33fb-3833-4562-915b-473afde39f65">
+22. Connect the Data Mapping item to the Send Email item.
+          <img width="253" alt="Screenshot 2024-07-28 at 5 02 11 PM" src="https://github.com/user-attachments/assets/a7de33fb-3833-4562-915b-473afde39f65">
 
-22. Click the Send Email item and on for Task Input enter the following:
+23. Click the Send Email item and on for Task Input enter the following:
     - To Recipient(s) -> Click "Variable" and search for "customer_email"
     - Subject -> Type in "Don't forget the items in your cart"
     - Body Format -> HTML
@@ -119,18 +119,18 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 
       <img width="396" alt="Screenshot 2024-07-28 at 5 06 21 PM" src="https://github.com/user-attachments/assets/41808d47-9065-44e1-91fe-c2593598a509">
 
-23. Click the "PUBLISH" button on the top right of the Application Integration bar
+24. Click the "PUBLISH" button on the top right of the Application Integration bar
             <img width="1491" alt="Screenshot 2024-07-28 at 5 07 00 PM" src="https://github.com/user-attachments/assets/9bc2e49d-fa52-4642-8aa6-0da03aee9e72">
 
-24. Go back to the Pub/Sub page and to your Pub/Sub Topic named "recapture_customer", which we created earlier. You'll see that you have a new subscription named something like "<your_project_name>_recapture_customer_<some_random_string>"
+25. Go back to the Pub/Sub page and to your Pub/Sub Topic named "recapture_customer", which we created earlier. You'll see that you have a new subscription named something like "<your_project_name>_recapture_customer_<some_random_string>"
             <img width="1353" alt="Screenshot 2024-07-29 at 1 19 41 AM" src="https://github.com/user-attachments/assets/99df906d-f6f7-446c-bea7-55b47b57fd1f">
 
-25. Click on this subscription, then click the Edit pencil button at the top of the screen.
+26. Click on this subscription, then click the Edit pencil button at the top of the screen.
 
-26. Under the Service Account section, you'll likely see a warning which states "Note: Cloud Pub/Sub needs the role roles/iam.serviceAccountTokenCreator granted to service account service-<your_project_number>@gcp-sa-pubsub.iam.gserviceaccount.com on this project to create identity tokens. You can change this later."
+27. Under the Service Account section, you'll likely see a warning which states "Note: Cloud Pub/Sub needs the role roles/iam.serviceAccountTokenCreator granted to service account service-<your_project_number>@gcp-sa-pubsub.iam.gserviceaccount.com on this project to create identity tokens. You can change this later."
             <img width="566" alt="Screenshot 2024-07-29 at 1 22 23 AM" src="https://github.com/user-attachments/assets/7f167d46-f3fd-4d7b-be7d-4168d23e85ac">
 
-27. Click the "GRANT" button to grant these permissions. Then click the "UPDATE" button at the bottom of the Edit wizard.
+28. Click the "GRANT" button to grant these permissions. Then click the "UPDATE" button at the bottom of the Edit wizard.
 
 24. Your Application Integration should now be fully deployed.
             <img width="1485" alt="Screenshot 2024-07-28 at 5 08 18 PM" src="https://github.com/user-attachments/assets/23b493b0-595a-4d51-8b72-59547faef211">
