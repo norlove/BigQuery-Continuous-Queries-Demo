@@ -171,34 +171,34 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
       <img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
 
 5. Go back to the BigQuery SQL editor and paste the following SQL query:
-```
-EXPORT DATA
- OPTIONS (format = CLOUD_PUBSUB,
- uri = "https://pubsub.googleapis.com/projects/production-242320/topics/recapture_customer")
-AS (SELECT
-   TO_JSON_STRING(
-     STRUCT(
-       customer_name AS customer_name,
-       customer_email AS customer_email, REGEXP_REPLACE(REGEXP_EXTRACT(ml_generate_text_llm_result,r"(?im)\<html\>(?s:.)*\<\/html\>"), r"(?i)\[your name\]", "Your friends at AI Megastore") AS customer_message))
- FROM ML.GENERATE_TEXT( MODEL `Continuous_Queries_Demo.gemini_1_5_pro`,
-     (SELECT
-       customer_name,
-       customer_email,
-       CONCAT("Write an email to customer ", customer_name, ", explaining the benefits and encouraging them to complete their purchase of: ", products, ". Also show other items the customer might be interested in. Provide the response email in HTML format.") AS prompt
-     FROM `Continuous_Queries_Demo.abandoned_carts`),
-   STRUCT( 1024 AS max_output_tokens,
-     0.2 AS temperature,
-     1 AS candidate_count, 
-     TRUE AS flatten_json_output)))
-```
+      ```
+      EXPORT DATA
+       OPTIONS (format = CLOUD_PUBSUB,
+       uri = "https://pubsub.googleapis.com/projects/production-242320/topics/recapture_customer")
+      AS (SELECT
+         TO_JSON_STRING(
+           STRUCT(
+             customer_name AS customer_name,
+             customer_email AS customer_email, REGEXP_REPLACE(REGEXP_EXTRACT(ml_generate_text_llm_result,r"(?im)\<html\>(?s:.)*\<\/html\>"), r"(?i)\[your name\]", "Your friends at AI Megastore") AS customer_message))
+       FROM ML.GENERATE_TEXT( MODEL `Continuous_Queries_Demo.gemini_1_5_pro`,
+           (SELECT
+             customer_name,
+             customer_email,
+             CONCAT("Write an email to customer ", customer_name, ", explaining the benefits and encouraging them to complete their purchase of: ", products, ". Also show other items the customer might be interested in. Provide the response email in HTML format.") AS prompt
+           FROM `Continuous_Queries_Demo.abandoned_carts`),
+         STRUCT( 1024 AS max_output_tokens,
+           0.2 AS temperature,
+           1 AS candidate_count, 
+           TRUE AS flatten_json_output)))
+      ```
 
 6.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
 
       <img width="1143" alt="Screenshot 2024-08-01 at 6 31 38 PM" src="https://github.com/user-attachments/assets/a9e0db6b-2d5f-4048-92c8-68419b7f603f">
 
-7. Click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
+7. When the window opens, click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
 
-6. Since we are writing the results of this continuous query to a Pub/Sub topic, you must run this query using a Service Account. We'll use the service account we created earlier. Click More -> Query Settings and scroll down to the Continuous query section and select your service account "bq-continuous-query-sa" and click Save.
+6. Since we are writing the results of this continuous query to a Pub/Sub topic, you must run this query using a Service Account [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#choose_an_account_type)]. We'll use the service account we created earlier. Click More -> Query Settings and scroll down to the Continuous query section and select your service account "bq-continuous-query-sa" and click Save.
 
       <img width="551" alt="Screenshot 2024-07-29 at 12 03 55 AM" src="https://github.com/user-attachments/assets/28aff716-a3b9-4c85-a829-33efed32cd03">
 
@@ -213,12 +213,12 @@ AS (SELECT
 1. BigQuery continuous queries can read and process data which arrives into BigQuery in a variety of ways [[ref](https://cloud.google.com/bigquery/docs/continuous-queries-introduction)]. For the purposes of this end-to-end demo, we'll offer two options: a very simple DML INSERT and streaming data to the abandoned_carts table using the BigQuery Storage Write API.
 
 2. To insert data into your table via a simple DML INSERT, just run the below query from the BigQuery console to insert one new row into your table:
-```
-#Simple DML INSERT to add one "abandoned shopping cart" to your table. 
-#Be sure to change the email address to an email address you can actually access for demo purposes.
-INSERT INTO `Continuous_Queries_Demo.abandoned_carts`(customer_name, customer_email,products)
-VALUES ("Your_Shopper's_Name","Your.Shoppers.Email@gmail.com","Violin Strings, Tiny Saxophone, Guitar Strap")
-```
+      ```
+      #Simple DML INSERT to add one "abandoned shopping cart" to your table. 
+      #Be sure to change the email address to an email address you can actually access for demo purposes.
+      INSERT INTO `Continuous_Queries_Demo.abandoned_carts`(customer_name, customer_email,products)
+      VALUES ("Your_Shopper's_Name","Your.Shoppers.Email@gmail.com","Violin Strings, Tiny Saxophone, Guitar Strap")
+      ```
 
 3. To stream data into your table via the BigQuery Storage Write API [[ref](https://cloud.google.com/bigquery/docs/write-api)], copy the files from the write-api-streaming-example folder into a Unix-based development environment (the [Google Cloud Shell](https://cloud.google.com/shell) is amazing for simple dev/test)
 
