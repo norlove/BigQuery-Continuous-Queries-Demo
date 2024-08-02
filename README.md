@@ -146,6 +146,8 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 3. Click Browse and find the project you are using for this demo. Then Select "CONTINUOUS" as the Job Type. Click Create.
 <img width="558" alt="Screenshot 2024-08-01 at 6 27 59 PM" src="https://github.com/user-attachments/assets/8f455be4-5fd1-469c-be3f-e3f3e3d43133">
 
+**NOTE: If you do not see this option, your project or user may not be allowlisted to use the BigQuery continuous queries public preview. Fill out [this request form](https://docs.google.com/forms/d/e/1FAIpQLSc-SL89C9K997jSm_u3oQH-UGGe3brzsybbX6mf5VFaA0a4iA/viewform) to obtian access.**
+
 4. You'll now see your assignment created under your reservation:
 <img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
 
@@ -171,12 +173,10 @@ AS (SELECT
      TRUE AS flatten_json_output)))
 ```
 
-4.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
-<img width="1127" alt="Screenshot 2024-07-29 at 12 01 52 AM" src="https://github.com/user-attachments/assets/9af40d46-b828-4e69-aca6-9664213bd23a">
+6.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
+<img width="1143" alt="Screenshot 2024-08-01 at 6 31 38 PM" src="https://github.com/user-attachments/assets/a9e0db6b-2d5f-4048-92c8-68419b7f603f">
 
-**NOTE: If you do not see this option, your project or user may not be allowlisted to use the BigQuery continuous queries public preview. Fill out [this request form](https://docs.google.com/forms/d/e/1FAIpQLSc-SL89C9K997jSm_u3oQH-UGGe3brzsybbX6mf5VFaA0a4iA/viewform) to obtian access.**
-
-5. Click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
+7. Click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
 
 6. Since we are writing the results of this continuous query to a Pub/Sub topic, you must run this query using a Service Account. We'll use the service account we created earlier. Click More -> Query Settings and scroll down to the Continuous query section and select your service account "bq-continuous-query-sa" and click Save.
 
