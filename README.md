@@ -32,7 +32,7 @@ CREATE TABLE `Continuous_Queries_Demo.abandoned_carts`(
   products string);
 ```
 3. Create a BigQuery remote connection named "continuous-queries-connection" in the Cloud Console using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#create_a_cloud_resource_connection).
-<img width="544" alt="Screenshot 2024-07-28 at 3 46 08 PM" src="https://github.com/user-attachments/assets/05afada9-a7aa-4cbf-80d6-c075f0a23d4d">
+    <img width="544" alt="Screenshot 2024-07-28 at 3 46 08 PM" src="https://github.com/user-attachments/assets/05afada9-a7aa-4cbf-80d6-c075f0a23d4d">
 
 4. Click "Go to connection", and in the Connection Info pane, copy the service account ID for use in the next step.
 
