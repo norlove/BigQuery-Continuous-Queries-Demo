@@ -219,4 +219,5 @@ proto_rows.serialized_rows.append(row.SerializeToString())
 <img width="1093" alt="Screenshot 2024-07-29 at 1 34 45 AM" src="https://github.com/user-attachments/assets/cf82e9f6-0033-44f4-ba5b-cae8a1bc7507">
 
 7. And check your email for the personalized message(s)!
-<img width="1175" alt="Screenshot 2024-07-29 at 1 35 15 AM" src="https://github.com/user-attachments/assets/40c3a0f7-3d30-4369-be0b-61b8c8078ade">
+![Screenshot 2024-08-01 at 7 02 02 PM](https://github.com/user-attachments/assets/2a03c059-1ae7-43ee-a0ca-acf146dda41c)
+
