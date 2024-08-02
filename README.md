@@ -243,5 +243,3 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 7. Now go check your email for the personalized message(s)!
 
       ![Screenshot 2024-08-01 at 7 02 02 PM](https://github.com/user-attachments/assets/2a03c059-1ae7-43ee-a0ca-acf146dda41c)
-
-***Note: the time it takes for the email to arrive in your inbox does depend on the AI model being used, type of inference being performed, complexity of the query, amount of BigQUery slot resources configured/available, and amount of data being processed by the continuous query. With this demo, it's generally taking ~60 seconds.
