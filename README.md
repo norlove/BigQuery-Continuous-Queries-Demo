@@ -1,7 +1,7 @@
 # BigQuery-Continuous-Queries-Demo
-This is an end-to-end demo of using BigQuery continuous queries to address abandoned ecommerce shopping carts. Demoed onstage at Google Cloud Next 2024 [[recording](https://youtu.be/Zo_y34J16yg?t=1395)].
+This is an end-to-end demo using BigQuery continuous queries to address abandoned ecommerce shopping carts. This was demoed onstage at Google Cloud Next 2024 [[recording](https://youtu.be/Zo_y34J16yg?t=1395)].
 
-BigQuery continuous queries are SQL statements that run continuously. Continuous queries let you analyze incoming data in BigQuery in real time. You can insert the output rows produced by a continuous query into a BigQuery table or export them to Pub/Sub or Bigtable. 
+BigQuery continuous queries are SQL statements that run continuously, allowing you analyze incoming data in BigQuery in real time. You can insert the output rows produced by a continuous query into a BigQuery table or export them to Pub/Sub or Bigtable. 
 
 Documentation on BigQuery continuous queries can be found [HERE](https://cloud.google.com/bigquery/docs/continuous-queries-introduction), and a blog which provides context of BigQuery continuous queries can be found [TO-BE-ADDED].
 
