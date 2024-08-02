@@ -116,7 +116,8 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
     - Subject -> Type in "Don't forget the items in your cart"
     - Body Format -> HTML
     - Body in Plain Text -> Click "Variable" and search for "customer_message"
-            <img width="396" alt="Screenshot 2024-07-28 at 5 06 21 PM" src="https://github.com/user-attachments/assets/41808d47-9065-44e1-91fe-c2593598a509">
+
+      <img width="396" alt="Screenshot 2024-07-28 at 5 06 21 PM" src="https://github.com/user-attachments/assets/41808d47-9065-44e1-91fe-c2593598a509">
 
 23. Click the "PUBLISH" button on the top right of the Application Integration bar
             <img width="1491" alt="Screenshot 2024-07-28 at 5 07 00 PM" src="https://github.com/user-attachments/assets/9bc2e49d-fa52-4642-8aa6-0da03aee9e72">
