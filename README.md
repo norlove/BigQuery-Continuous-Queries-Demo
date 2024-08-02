@@ -220,7 +220,7 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
       VALUES ("Your_Shopper's_Name","Your.Shoppers.Email@gmail.com","Violin Strings, Tiny Saxophone, Guitar Strap")
       ```
 
-3. To stream data into your table via the BigQuery Storage Write API [[ref](https://cloud.google.com/bigquery/docs/write-api)], copy the files from the write-api-streaming-example folder into a Unix-based development environment (the [Google Cloud Shell](https://cloud.google.com/shell) is amazing for simple dev/test)
+3. To stream data into your table via the BigQuery Storage Write API [[ref](https://cloud.google.com/bigquery/docs/write-api)], copy the files from the write-api-streaming-example folder from this GitHub repo into a Unix-based development environment (the [Google Cloud Shell](https://cloud.google.com/shell) is amazing for simple dev/test like this)
 
 4. In this example, we’ll use Python, so we’ll stream data as protocol buffers. For a quick refresher on working with protocol buffers, [here’s a great tutorial](https://developers.google.com/protocol-buffers/docs/pythontutorial). Using Python, we’ll first align our protobuf messages to the table we created using a .proto file in proto2 format. Use the sample_data.proto file from the write-api-streaming-example folder you downloaded to your developer environment, then run the following command within to update your protocol buffer definition:
       ```
@@ -240,7 +240,8 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 
       <img width="1093" alt="Screenshot 2024-07-29 at 1 34 45 AM" src="https://github.com/user-attachments/assets/cf82e9f6-0033-44f4-ba5b-cae8a1bc7507">
 
-7. And check your email for the personalized message(s)!
+7. Now go check your email for the personalized message(s)!
 
       ![Screenshot 2024-08-01 at 7 02 02 PM](https://github.com/user-attachments/assets/2a03c059-1ae7-43ee-a0ca-acf146dda41c)
 
+***Note: the time it takes for the email to arrive in your inbox does depend on the AI model being used, type of inference being performed, complexity of the query, amount of BigQUery slot resources configured/available, and amount of data being processed by the continuous query. With this demo, it's generally taking ~60 seconds.
