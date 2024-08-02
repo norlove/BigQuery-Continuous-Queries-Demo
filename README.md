@@ -183,7 +183,7 @@ AS (SELECT
 <img width="551" alt="Screenshot 2024-07-29 at 12 03 55 AM" src="https://github.com/user-attachments/assets/28aff716-a3b9-4c85-a829-33efed32cd03">
 
 7. Your continuous query should now be valid.
-<img width="267" alt="Screenshot 2024-07-29 at 12 05 29 AM" src="https://github.com/user-attachments/assets/f8a231f5-e697-448e-ab7a-4c4c7363f892">
+<img width="240" alt="Screenshot 2024-08-01 at 6 33 50 PM" src="https://github.com/user-attachments/assets/fbc3af67-7372-457f-8939-f4d71d313687">
 
 8. Click Run to start your continuous query. After about a minute or so, the continuous query will be fully running, ready to receive and process incoming data into your abandoned_carts table.
    
