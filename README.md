@@ -17,9 +17,11 @@ To demonstrate this example, we’ll use a BigQuery table named “abandoned_car
 
 ## Setting up our project
 
-1. Ensure your user account has the appropriate IAM permissions [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#choose_an_account_type)]. During this demo, we'll run the continuous query with a Service Account as we'll be writing to a Pub/Sub topic.
+1. Ensure your project has enabled the [Vertex AI](https://console.cloud.google.com/apis/library/aiplatform.googleapis.com) and [Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com)
 
-2. Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
+2. Ensure your user account has the appropriate IAM permissions [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#choose_an_account_type)]. During this demo, we'll run the continuous query with a Service Account as we'll be writing to a Pub/Sub topic.
+
+3. Create a dataset and table in your project by running the following SQL query in your BigQuery environment: 
       ```
       #Creates a dataset named Continuous_Queries_demo. Be sure to replace the project production-242320 with your own Project ID.
       CREATE SCHEMA `production-242320.Continuous_Queries_Demo`;
@@ -31,7 +33,7 @@ To demonstrate this example, we’ll use a BigQuery table named “abandoned_car
         last_updated timestamp default current_timestamp,
         products string);
       ```
-3. Create a BigQuery remote connection named "continuous-queries-connection" in the Cloud Console using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#create_a_cloud_resource_connection).
+4. Create a BigQuery remote connection named "continuous-queries-connection" in the Cloud Console using [these steps](https://cloud.google.com/bigquery/docs/bigquery-ml-remote-model-tutorial#create_a_cloud_resource_connection).
 
       <img width="544" alt="Screenshot 2024-07-28 at 3 46 08 PM" src="https://github.com/user-attachments/assets/05afada9-a7aa-4cbf-80d6-c075f0a23d4d">
 
