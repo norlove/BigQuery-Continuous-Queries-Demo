@@ -174,6 +174,7 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
       ```
       EXPORT DATA
        OPTIONS (format = CLOUD_PUBSUB,
+       #Be sure to replace the Pub/Sub URI with your own Project ID and Pub/Sub Topic ID.
        uri = "https://pubsub.googleapis.com/projects/production-242320/topics/recapture_customer")
       AS (SELECT
          TO_JSON_STRING(
