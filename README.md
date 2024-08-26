@@ -246,3 +246,5 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 7. Now go check your email for the personalized message(s)!
 
       ![Screenshot 2024-08-01 at 7 02 02 PM](https://github.com/user-attachments/assets/2a03c059-1ae7-43ee-a0ca-acf146dda41c)
+
+8. Once completed, be sure to clean up your environment by cancelling your continuous query, removing your slot assignment, deleting your slot reservation, deleting your Pub/Sub topic, deleting your Application Integration trigger, etc.
