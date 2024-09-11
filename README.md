@@ -174,7 +174,7 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
 
 5. Go back to the BigQuery SQL editor and paste the following SQL query:
 
-   *Note: The URI provided is a Pub/Sub Topic, with the GCP project listed as "my_project" and the Pub/Sub Topic listed as "my_topic". Be sure to change these. You can also specify different destinations for a BigQuery continuous query, as described in [these examples](https://cloud.google.com/bigquery/docs/continuous-queries#examples).
+   ** Note: The URI provided is a Pub/Sub Topic, with the GCP project listed as "my_project" and the Pub/Sub Topic listed as "my_topic". Be sure to change these. You can also specify different destinations for a BigQuery continuous query, as described in [these examples](https://cloud.google.com/bigquery/docs/continuous-queries#examples). **
    
       ```
       EXPORT DATA
