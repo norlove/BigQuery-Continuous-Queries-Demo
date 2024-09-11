@@ -173,11 +173,14 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
       <img width="1423" alt="Screenshot 2024-07-28 at 4 18 35 PM" src="https://github.com/user-attachments/assets/35464bff-d47d-4ffb-ae8f-ba8a30331992">
 
 5. Go back to the BigQuery SQL editor and paste the following SQL query:
+
+   *Note: The URI provided is a Pub/Sub Topic, with the GCP project listed as "my_project" and the Pub/Sub Topic listed as "my_topic". Be sure to change these. You can also specify different destinations for a BigQuery continuous query, as described in [these examples](https://cloud.google.com/bigquery/docs/continuous-queries#examples).
+   
       ```
       EXPORT DATA
        OPTIONS (format = CLOUD_PUBSUB,
        #Be sure to replace the Pub/Sub URI with your own Project ID and Pub/Sub Topic ID.
-       uri = "https://pubsub.googleapis.com/projects/production-242320/topics/recapture_customer")
+       uri = "https://pubsub.googleapis.com/projects/my_project/topics/my_topic")
       AS (SELECT
          TO_JSON_STRING(
            STRUCT(
@@ -195,11 +198,11 @@ Google Cloud's [Application Integration platform](https://cloud.google.com/appli
            TRUE AS flatten_json_output)))
       ```
 
-6.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
+7.  Before you can run your query, you must enable BigQuery continuous query mode. In the BigQuery editor, click More -> Continuous Query mode
 
       <img width="1143" alt="Screenshot 2024-08-01 at 6 31 38 PM" src="https://github.com/user-attachments/assets/a9e0db6b-2d5f-4048-92c8-68419b7f603f">
 
-7. When the window opens, click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
+8. When the window opens, click the button CONFIRM to enable continuous queries for this BigQuery editor tab.
 
 6. Since we are writing the results of this continuous query to a Pub/Sub topic, you must run this query using a Service Account [[ref](https://cloud.google.com/bigquery/docs/continuous-queries#choose_an_account_type)]. We'll use the service account we created earlier. Click More -> Query Settings and scroll down to the Continuous query section and select your service account "bq-continuous-query-sa" and click Save.
 
